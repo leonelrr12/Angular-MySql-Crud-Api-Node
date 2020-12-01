@@ -1,20 +1,29 @@
-<div class="col-md-4 offset-md-4">
+<div class="col-md-4 offset-md-2 mt-4">
     <div class="card">
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="title" placeholder="Tite" autofocus>
+                    <input type="text" class="form-control" name="title" [(ngModel)]="game.title" placeholder="Title" autofocus>
                 </div>
                 <div class="form-group">
-                    <textarea name="description" id="" rows="3" class="form-control" placeholder="Description"></textarea>
+                    <textarea name="description" id="" rows="3" class="form-control" [(ngModel)]="game.description" placeholder="Description"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="url" class="form-control" name="image" placeholder="Image">
+                    <input type="url" class="form-control" name="image" [(ngModel)]="game.image" placeholder="Image">
                 </div>
-                <button class="btn btn-success btn-block">
+                <button class="btn btn-success btn-block" (click)="edit ? updateGame() : saveNewGame()">
                     Save Game
                 </button>
             </form>
         </div>
+    </div>
+</div>
+
+<div class="col-md-4 mt-4">
+    <div class="card card-body text-center">
+        <img [src]="game.image == '' ? 'assets/noimage2.png' : game.image" alt="" class="card-img-top">
+        <h3>{{game.id}}. {{game.title == '' ? 'Game Title' : game.title}}</h3>
+        <p>{{game.description == '' ? 'Write Your Description' : game.description}}</p>
+        <p>{{game.created_at | date: 'yyyy-MM-dd'}}</p>
     </div>
 </div>

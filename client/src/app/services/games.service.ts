@@ -6,7 +6,7 @@ import { Game } from '../models/Game';
 @Injectable({
   providedIn: 'root'
 })
-export class GmaesService {
+export class GamesService {
 
   API_URI = 'http://localhost:3001/api';
 
@@ -24,7 +24,7 @@ export class GmaesService {
     return this.http.post(`${this.API_URI}/games`, game);
   }
 
-  updateGame(id: string, udtGame: Game) {
+  updateGame(id: string|number, udtGame: Game) {
     return this.http.put(`${this.API_URI}/games/${id}`, udtGame);
   }
 
